@@ -1,0 +1,4 @@
+python3 -m pip install spotipy --upgrade pip
+SPOTIPY_CLIENT_ID='c3907e1888d04ca58092b8e0cc010939'
+SPOTIPY_CLIENT_SECRET='336f366febd44f63b63e2bb7e7528236'
+SPOTIPY_REDIRECT_URI='https://localhost:8888/callback'
