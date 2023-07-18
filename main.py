@@ -4,9 +4,16 @@ import polars as pl
 
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
 
-data_full = {"name": [], "popularity": [], "followers": []} 
+data_full = {"name": [], 
+             "popularity": [], 
+             "followers": [], 
+             "artist_uri": []} 
 
-full_table = pl.DataFrame(data_full, schema={"name": str, "popularity": pl.Int64, "followers": pl.Int64})
+full_table = pl.DataFrame(
+    data_full, schema={"name": str, 
+                       "popularity": pl.Int64, 
+                       "followers": pl.Int64,
+                       "artist_uri": str})
 
 print(full_table)
 
@@ -16,14 +23,33 @@ index = (list(range(limit)))
 results = spotify.search(q='genre:k-pop', limit = limit, type='artist')
 
 for i in index:
-    followers = results['artists']['items'][i]['followers']['total']
-    name = results['artists']['items'][i]['name']
-    popularity = results['artists']['items'][i]['popularity']
+    for genre in results['artists']['items'][i]['genres']:
+        if genre == 'k-pop girl group':
+            followers = results['artists']['items'][i]['followers']['total']
+            name = results['artists']['items'][i]['name']
+            popularity = results['artists']['items'][i]['popularity']
+            artist_uri = results['artists']['items'][i]['uri']
 
-    data = {"name": name, "popularity": popularity, "followers": followers} 
-    df = pl.DataFrame(data)
+            data = {"name": name, 
+            "popularity": popularity, 
+            "followers": followers,
+            "artist_uri": artist_uri} 
+            df = pl.DataFrame(data)
 
-    full_table.extend(df)
+            full_table.extend(df)
+        if genre == 'k-pop boy group':
+            followers = results['artists']['items'][i]['followers']['total']
+            name = results['artists']['items'][i]['name']
+            popularity = results['artists']['items'][i]['popularity']
+            artist_uri = results['artists']['items'][i]['uri']
+
+            data = {"name": name, 
+            "popularity": popularity, 
+            "followers": followers,
+            "artist_uri": artist_uri} 
+            df = pl.DataFrame(data)
+
+            full_table.extend(df)
 
     
 
