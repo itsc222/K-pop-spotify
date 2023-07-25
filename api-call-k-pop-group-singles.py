@@ -22,7 +22,7 @@ for tuple in artist_df.rows():
 # print(uri_list)
 
 for uri in uri_list:
-    albums = (spotify.artist_albums(uri, album_type = 'single', limit=50, offset=0)["items"][0:5])
+    albums = (spotify.artist_albums(uri, album_type = 'single', limit=50, offset=0)["items"][0:3])
     for album in albums:
         release_date = (album['release_date'])
         name = (album['name'])
