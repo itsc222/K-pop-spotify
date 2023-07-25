@@ -58,6 +58,9 @@ print(full_table)
 path = "spotify_k_pop_popularity.csv"
 full_table.write_csv(path, separator= ",")
 
+path = "/Users/ischneid/Code Studio/K-Pop-Type-Tok/K_Pop_Type_Tok/spotify_k_pop_popularity.csv"
+full_table.write_csv(path, separator= ",")
+
 #artists = results['items']
 #while results['next']:
 #    results = spotify.next(results)
