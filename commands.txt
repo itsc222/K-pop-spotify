@@ -1,8 +1,0 @@
-#initiate with '$ sh commands.txt'
-
-python3 -m pip install spotipy --upgrade pip
-python3 -m pip install polars
-
-export SPOTIPY_CLIENT_ID=c3907e1888d04ca58092b8e0cc010939
-export SPOTIPY_CLIENT_SECRET=db11681ef93a403e898fa1873464d424
-export SPOTIPY_REDIRECT_URI=https://localhost:8888/callback
